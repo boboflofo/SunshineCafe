@@ -67,10 +67,10 @@ namespace SunshineCafe.Tests
   public void GetAll_ReturnsAllVendorObjects_VendorList()
   {
     //Arrange
-    string name01 = "Ally's";
-    string name02 = "Bob's";
-    Vendor newVendor1 = new Vendor(name01, "fluffy");
-    Vendor newVendor2 = new Vendor(name02, "hard");
+    string shop1 = "Ally's";
+    string shop2 = "Bob's";
+    Vendor newVendor1 = new Vendor(shop1, "fluffy");
+    Vendor newVendor2 = new Vendor(shop2, "hard");
     List<Vendor> newList = new List<Vendor> { newVendor1, newVendor2 };
 
     //Act
@@ -78,6 +78,22 @@ namespace SunshineCafe.Tests
 
     //Assert
     CollectionAssert.AreEqual(newList, result);
+  }
+
+   [TestMethod]
+  public void Find_ReturnsCorrectVendor_Vendor()
+  {
+    //Arrange
+    string shop1 = "Work";
+    string shop2 = "School";
+    Vendor newVendor1 = new Vendor(shop1, "fluffy");
+    Vendor newVendor2 = new Vendor(shop2, "hard");
+
+    //Act
+    Vendor result = Vendor.Find(2);
+
+    //Assert
+    Assert.AreEqual(newVendor2, result);
   }
 
   }
