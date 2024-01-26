@@ -23,28 +23,18 @@ namespace SunshineCafe.Tests
     [TestMethod]
     public void GetName_ReturnsName_String()
     {
-
       string name = "bread";
       Vendor newVendor = new Vendor(name, "fluffy");
-
-
       string result = newVendor.Name;
-
-
       Assert.AreEqual(name, result);
     }
 
     [TestMethod]
     public void GetDescription_ReturnsDescription_String()
     {
-
       string description = "fluffy";
       Vendor newVendor = new Vendor("bread", description);
-
-
       string result = newVendor.Description;
-
-
       Assert.AreEqual(description, result);
     }
 
@@ -52,49 +42,51 @@ namespace SunshineCafe.Tests
 
     public void GetId_ReturnsVendorId_Int()
     {
-     
       string name = "bread";
       Vendor newVendor = new Vendor(name, "fluffy");
-
-      
       int result = newVendor.Id;
-
-      
       Assert.AreEqual(1, result);
     }
 
     [TestMethod]
-  public void GetAll_ReturnsAllVendorObjects_VendorList()
+    public void GetAll_ReturnsAllVendorObjects_VendorList()
+    {
+      string shop1 = "Ally's";
+      string shop2 = "Bob's";
+      Vendor newVendor1 = new Vendor(shop1, "fluffy");
+      Vendor newVendor2 = new Vendor(shop2, "hard");
+      List<Vendor> newList = new List<Vendor> { newVendor1, newVendor2 };
+      List<Vendor> result = Vendor.GetAll();
+      CollectionAssert.AreEqual(newList, result);
+    }
+
+    [TestMethod]
+    public void Find_ReturnsCorrectVendor_Vendor()
+    {
+      string shop1 = "Ally's";
+      string shop2 = "Bob's";
+      Vendor newVendor1 = new Vendor(shop1, "fluffy");
+      Vendor newVendor2 = new Vendor(shop2, "hard");
+      Vendor result = Vendor.Find(2);
+      Assert.AreEqual(newVendor2, result);
+    }
+
+[TestMethod]
+  public void AddOrder_AddOrderWithVendor_OrderList()
   {
     //Arrange
-    string shop1 = "Ally's";
-    string shop2 = "Bob's";
-    Vendor newVendor1 = new Vendor(shop1, "fluffy");
-    Vendor newVendor2 = new Vendor(shop2, "hard");
-    List<Vendor> newList = new List<Vendor> { newVendor1, newVendor2 };
+    string description = "Walk the dog.";
+    Order newOrder = new Order(description);
+    List<Order> newList = new List<Order> { newOrder };
+    string name = "Work";
+    Vendor newVendor = new Vendor(name, "fluffy");
+    newVendor.AddOrder(newOrder);
 
     //Act
-    List<Vendor> result = Vendor.GetAll();
+    List<Order> result = newVendor.Orders;
 
     //Assert
     CollectionAssert.AreEqual(newList, result);
   }
-
-   [TestMethod]
-  public void Find_ReturnsCorrectVendor_Vendor()
-  {
-    //Arrange
-    string shop1 = "Work";
-    string shop2 = "School";
-    Vendor newVendor1 = new Vendor(shop1, "fluffy");
-    Vendor newVendor2 = new Vendor(shop2, "hard");
-
-    //Act
-    Vendor result = Vendor.Find(2);
-
-    //Assert
-    Assert.AreEqual(newVendor2, result);
-  }
-
   }
 }
