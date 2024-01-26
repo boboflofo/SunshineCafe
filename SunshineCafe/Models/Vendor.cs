@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 
-namespace ToDoList.Models
+namespace SunshineCafe.Models
 {
   public class Vendor
   {
     public string Name { get; set; }
     public int Id { get; }
-    public List<Order> Orders { get; set; }
-    private static List<Category> _instances = new List<Category> {};
+    // public List<Order> Orders { get; set; }
+    private static List<Vendor> _instances = new List<Vendor> {};
   }
 }
