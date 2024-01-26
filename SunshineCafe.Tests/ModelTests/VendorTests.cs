@@ -63,5 +63,22 @@ namespace SunshineCafe.Tests
       Assert.AreEqual(1, result);
     }
 
+    [TestMethod]
+  public void GetAll_ReturnsAllVendorObjects_VendorList()
+  {
+    //Arrange
+    string name01 = "Ally's";
+    string name02 = "Bob's";
+    Vendor newVendor1 = new Vendor(name01, "fluffy");
+    Vendor newVendor2 = new Vendor(name02, "hard");
+    List<Vendor> newList = new List<Vendor> { newVendor1, newVendor2 };
+
+    //Act
+    List<Vendor> result = Vendor.GetAll();
+
+    //Assert
+    CollectionAssert.AreEqual(newList, result);
+  }
+
   }
 }
