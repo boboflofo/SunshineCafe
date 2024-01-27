@@ -20,6 +20,12 @@ namespace SunshineCafe.Models
       Orders = new List<Order>{};
     }
 
+    
+  public void AddOrder(Order Order)
+  {
+    Orders.Add(Order);
+  }
+
     public static void ClearAll()
   {
     _instances.Clear();
