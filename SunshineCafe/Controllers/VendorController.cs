@@ -39,7 +39,7 @@ namespace SunshineCafe.Controllers
     return View(model);
   }
 
-  [HttpPost("/categories/{vendorId}/orders")]
+  [HttpPost("/vendors/{vendorId}/orders")]
     public ActionResult Create(int vendorId, string orderTitle, string orderDescription, int orderPrice, string orderDate)
     {
       Dictionary<string, object> model = new Dictionary<string, object>();
