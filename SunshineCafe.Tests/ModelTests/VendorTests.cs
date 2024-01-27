@@ -74,18 +74,13 @@ namespace SunshineCafe.Tests
 [TestMethod]
   public void AddOrder_AddOrderWithVendor_OrderList()
   {
-    //Arrange
     string description = "Walk the dog.";
-    Order newOrder = new Order(description);
+    Order newOrder = new Order("name", description, 10, "date");
     List<Order> newList = new List<Order> { newOrder };
     string name = "Work";
     Vendor newVendor = new Vendor(name, "fluffy");
     newVendor.AddOrder(newOrder);
-
-    //Act
     List<Order> result = newVendor.Orders;
-
-    //Assert
     CollectionAssert.AreEqual(newList, result);
   }
   }
